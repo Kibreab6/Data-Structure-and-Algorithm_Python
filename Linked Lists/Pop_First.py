@@ -28,40 +28,35 @@ class LinkedList:
         self.length += 1
         return True
 
-    def pop(self):
+    def pop_first(self):
         if self.length == 0:
             return None
         temp = self.head
-        pre = self.head
-        while temp.next is not None:
-            pre = temp
-            temp = temp.next
-        self.tail = pre
-        self.tail.next = None
+        self.head = self.head.next
+        temp.next = None
         self.length -= 1
-        if self.length == 0:
-            self.head = None
+        if self.length == 1:
             self.tail = None
         return temp
 
-    def prepend(self, value):
-        new_node = Node(value)
-        if self.length == 0:
-            self.head = new_node
-            self.tail = new_node
-        else:
-            new_node.next = self.head
-            self.head = new_node
-        self.length += 1
-        return True
 
+my_linked_list = LinkedList(2)
+my_linked_list.append(1)
 
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
 
 # (2) Items - Returns 2 Node
-print(my_linked_list.pop().value)
+print(my_linked_list.pop_first().value)
 # (1) Item -  Returns 1 Node
-print(my_linked_list.pop().value)
+print(my_linked_list.pop_first().value)
 # (0) Items - Returns None
-print(my_linked_list.pop())
+print(my_linked_list.pop_first())
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    2
+    1
+    None
+
+"""

@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while temp.next is not None:
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -55,13 +55,59 @@ class LinkedList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.tail = None
+        return temp
 
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
 
-# (2) Items - Returns 2 Node
-print(my_linked_list.pop().value)
-# (1) Item -  Returns 1 Node
-print(my_linked_list.pop().value)
-# (0) Items - Returns None
-print(my_linked_list.pop())
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+
+my_linked_list = LinkedList(11)
+my_linked_list.append(3)
+my_linked_list.append(23)
+my_linked_list.append(7)
+
+print('LL before set_value():')
+my_linked_list.print_list()
+
+my_linked_list.set_value(1, 4)
+
+print('\nLL after set_value():')
+my_linked_list.print_list()
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    LL before set_value():
+    11
+    3
+    23
+    7
+
+    LL after set_value():
+    11
+    4
+    23
+    7
+"""
