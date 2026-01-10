@@ -21,6 +21,7 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
         return True
+    # checks if the linked list has a loop
 
     def has_loop(self):
         slow = self.head
