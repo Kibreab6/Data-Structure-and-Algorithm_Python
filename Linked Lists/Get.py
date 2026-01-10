@@ -31,12 +31,20 @@ class LinkedList:
 
 # get method using specified index
 
+
     def get(self, index):
         if index < 0 or self.length < index:
             return None
         temp = self.head
         for _ in range(index):
             temp = temp.next
+        return temp
+    temp = self.head
+
+    def set(self, index, value):
+        for _ in range(index):
+            temp = temp.next
+            temp = value
         return temp
 
 

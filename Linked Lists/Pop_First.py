@@ -27,6 +27,7 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
         return True
+# pop_first methid
 
     def pop_first(self):
         if self.length == 0:
@@ -50,13 +51,3 @@ print(my_linked_list.pop_first().value)
 print(my_linked_list.pop_first().value)
 # (0) Items - Returns None
 print(my_linked_list.pop_first())
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    2
-    1
-    None
-
-"""
